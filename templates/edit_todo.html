@@ -1,0 +1,17 @@
+{% extends 'config/base.html' %}
+
+{% block content %}
+<div class="ui container" style="margin-top: 50px;">
+    <h1 class="ui center aligned header">Редактировать задачу</h1>
+    <form class="ui form" action="{% url 'edit' todo_id=todo.id %}" method="post">
+        {% csrf_token %}
+        <div class="field">
+            <label>Название задачи</label>
+            <input type="text" name="title" value="{{ todo.title }}" style="width: 50%;">
+            <label>Описание задачи</label>
+            <textarea name="description" style="width: 100%; height: 150px;">{{ todo.description }}</textarea>
+        </div>
+        <button class="ui teal basic button" type="submit">Сохранить</button>
+    </form>
+</div>
+{% endblock %}
